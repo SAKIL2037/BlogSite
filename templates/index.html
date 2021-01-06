@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+
+{% block category %}
+  {% for cat in cats %}
+		<a href="/?category={{ cat.id }}" class="btn btn-primary mx-3"> {{ cat.name }}</a>
+	{% endfor %}
+{% endblock %}
+
+
+
+{% block mainSection %}
+
+{% load static %}
+
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+				{% for post in posts %}
+
+			    <div class="item mb-5">
+				    <div class="media">
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src='/media/{{post.image}}' alt="image" >
+					    <div class="media-body">
+						   <h3 class="title mb-1"><a href="post/?postid={{ post.id }}">{{ post.title }} </a></h3>
+						    <div class="meta mb-1"><span class="date">{{ post.created_at }}</span><span ><a href="/?category={{ post.category.id }}"> {{ post.category }}</a></span></div>
+							<div class="intro">{{ post.body | truncatewords:30 }}</div>
+						    <a class="more-link" href="post/?postid={{ post.id }}">Read more &rarr;</a>
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+				{% endfor %}
+
+
+
+		    </div>
+	    </section>
+	   {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'basic.html' %}
+{% block category %}
+  {% for cat in cats %}
+
+		<a href="/?category={{ cat.id }}" class="btn btn-primary mx-3"> {{ cat.name }}</a>
+	{% endfor %}
+{% endblock %}
+{% block mainSection %}
+{% load static %}
+
+
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">{{ post.title }}</h2>
+				    <div class="meta mb-3"><span class="date">{{ post.created_at }}</span><span class="comment"><a href="/?category={{ post.category.id }}"> {{ post.category }}</a></span></div>
+			    </header>
+
+			    <div class="blog-post-body">
+				    <figure class="blog-banner">
+				        <a href="https://made4dev.com"><img class="img-fluid text-center" src='/media/{{post.image}}' alt="image" ></a>
+				    </figure>
+					<p>{{ post.body }} </p>
+
+			    </div>
+		    </div><!--//container-->
+	    </article>
+
+
+
+{% endblock %}
