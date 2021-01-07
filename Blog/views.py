@@ -13,12 +13,13 @@ def index(request):
 
     if 'category' in request.GET:
         page = posts.filter(category = int(request.GET.get('category')))
+        page = page.order_by('-created_at')
         pageNumber = 1
     elif 'postid' in request.GET:
         page = posts.filter(id = int(request.GET.get('postid')))
 
     elif 'post' not in request.GET:
-        posts = Paginator(posts, 5)
+        posts = Paginator(posts.order_by('-created_at'), 5)
         pageNumber = request.GET.get('page', 1)
         try:
             page = posts.page(pageNumber)
@@ -30,13 +31,6 @@ def index(request):
         'pn': pageNumber
     }
     return render(request, 'index.html', context)
-
-
-
-def category(request):
-
-    return render(request,'category.html')
-
 
 
 def view_post(request):
