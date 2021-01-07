@@ -18,7 +18,7 @@
 
 			    <div class="item mb-5">
 				    <div class="media">
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src='/media/{{post.image}}' alt="image" >
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src='{{post.image.url}}' alt="image" >
 					    <div class="media-body">
 						   <h3 class="title mb-1"><a href="post/?postid={{ post.id }}">{{ post.title }} </a></h3>
 						    <div class="meta mb-1"><span class="date">{{ post.created_at }}</span><span ><a href="/?category={{ post.category.id }}"> {{ post.category }}</a></span></div>
